@@ -12,8 +12,9 @@ const server = http.createServer(function(req, res) {
 
     req.setEncoding('utf-8');
     req.on('data', d => {
-      res.setHeader('Content-Type', 'text/plain');
-      res.end(`Information Recieved: ${d}`);
+      res.writeHead(200, {'Content-Type': 'text/plain'});
+      res.write(d)
+      res.end();
     });
     
   }
